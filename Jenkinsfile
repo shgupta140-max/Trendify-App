@@ -8,7 +8,7 @@ pipeline {
         DOCKER_CREDS_ID = 'shgupta140-Docker-Cred'
         
         // Point to the repository holding 01-deployment.yml
-        GITOPS_REPO     = 'github.com/shgupta140/Trendify-app.git' 
+        GITOPS_REPO     = 'github.com/shgupta140/Trendify-App.git' 
         GITOPS_BRANCH   = 'main'
         GIT_CREDS_ID    = 'shgupta140-max-git-repo-cred'
         
