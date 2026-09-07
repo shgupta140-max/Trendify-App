@@ -173,11 +173,12 @@ The expected repository responsibilities are:
 
 Log in to the Jenkins server created by the platform Terraform configuration. Create four Pipeline jobs, each configured to load its `Jenkinsfile` from the corresponding repository and branch:
 
-| ----- Jenkins job  --------- | ---- Repository ------- | ---- Purpose ------------------------------------------------------------------------------------------|
-| `Trendify-App-Pipeline`      | `Trendify-App.git`      | Builds the application image, pushes it to Docker Hub, and updates the image tag in `Trendify-GitOps`. |
-| `Trendify-GitOps-Pipeline`   | `Trendify-GitOps.git`   | Applies the application Kubernetes manifests to the EKS cluster.                                       |
-| `Trendify-Infra-Pipeline`    | `Trendify-Infra.git`    | Creates or updates the AWS infrastructure and EKS cluster.                                             |
-| `Trendify-Platform-Pipeline` | `trendify-platform.git` | Deploys the `kube-prometheus-stack` and related monitoring configuration.                              |
+| Jenkins job | Repository | Purpose |
+| --- | --- | --- |
+| `Trendify-App-Pipeline` | `Trendify-App.git` | Builds the application image, pushes it to Docker Hub, and updates the image tag in `Trendify-GitOps`. |
+| `Trendify-GitOps-Pipeline` | `Trendify-GitOps.git` | Applies the application Kubernetes manifests to the EKS cluster. |
+| `Trendify-Infra-Pipeline` | `Trendify-Infra.git` | Creates or updates the AWS infrastructure and EKS cluster. |
+| `Trendify-Platform-Pipeline` | `trendify-platform.git` | Deploys the `kube-prometheus-stack` and related monitoring configuration. |
 
 Before running the jobs, configure the required Jenkins credentials and permissions:
 
