@@ -8,7 +8,7 @@ pipeline {
         DOCKER_CREDS_ID = 'shgupta140-Docker-Cred'
         
         // Point to the repository holding 01-deployment.yml
-        GITOPS_REPO     = 'github.com/shgupta140/Trendify-App.git' 
+        GITOPS_REPO     = 'github.com/shgupta140-max/Trendify-GitOps.git' 
         GITOPS_BRANCH   = 'main'
         GIT_CREDS_ID    = 'shgupta140-max-git-repo-cred'
         
@@ -41,7 +41,7 @@ pipeline {
         stage('Update GitOps Repository') {
             steps {
                 withCredentials([usernamePassword(credentialsId: GIT_CREDS_ID, passwordVariable: 'GIT_TOKEN', usernameVariable: 'GIT_USER')]) {
-                    sh """
+                    sh '''
                         # Clone the GitOps repo into a temporary workspace
                         git clone https://${GIT_USER}:${GIT_TOKEN}@${GITOPS_REPO} gitops-workspace
                         cd gitops-workspace
@@ -57,7 +57,7 @@ pipeline {
                         git add ${TARGET_YAML}
                         git commit -m "Auto-deploy: Update App image to ${IMAGE_TAG}"
                         git push origin ${GITOPS_BRANCH}
-                    """
+                    '''
                 }
             }
         }
